@@ -6,12 +6,39 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint --max-warnings=0",
+    "seed": "node --conditions=react-server --import tsx prisma/seed.ts",
+    "admin:create": "node --conditions=react-server --import tsx scripts/create-admin.ts",
+    "assets:brand": "node scripts/generate-brand-assets.mjs",
+    "test:requests": "node --conditions=react-server --import tsx --test tests/requests.test.ts",
+    "test:auth": "node --conditions=react-server --import tsx --test tests/auth.test.ts",
+    "test:certificates": "node --conditions=react-server --import tsx --test tests/certificates.test.ts",
+    "test:provisioning": "node --conditions=react-server --import tsx --test tests/provisioning.test.ts",
+    "test:uploads": "node --conditions=react-server --import tsx --test tests/uploads.test.ts",
+    "test:cms": "node --conditions=react-server --import tsx --test tests/cms.test.ts",
+    "test:admin-filters": "node --conditions=react-server --import tsx --test tests/admin-filters.test.ts"
   },
   "dependencies": {
+    "@prisma/adapter-mariadb": "^7.10.1",
+    "@prisma/client": "^7.10.1",
+    "argon2": "^0.45.2",
+    "cloudinary": "^2.11.0",
+    "dotenv": "^18.0.10",
+    "framer-motion": "^14.14.0",
+    "jose": "^6.2.18",
     "next": "16.4.6",
+    "prisma": "^7.10.1",
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "server-only": "^0.0.1",
+    "sharp": "^0.35.5",
+    "sonner": "^2.0.8",
+    "zod": "^4.6.7"
+  },
+  "overrides": {
+    "@prisma/config": {
+      "effect": "3.22.1"
+    }
   },
   "devDependencies": {
     "@tailwindcss/turbopack": "4.3.3",
@@ -21,6 +48,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "tailwindcss": "4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }
